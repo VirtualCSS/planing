@@ -1,24 +1,27 @@
 'use strict';
 
-var StyleSheet = require('react-style');
+var StyleSheet = require('virtual-css');
 
-var ButtonStyles = StyleSheet.create({
+// SEE the comment in index.js what the motivation behind the `StyleSheet.composer`
+// is about.
 
-  primary: {
+module.exports.primary = StyleSheet.composer({
+  '!BASE': {
     backgroundColor: 'rgb(0, 120, 231)',
     color: '#fff'
-  },
+  }
+});
 
-  success: {
+module.exports.success = StyleSheet.composer({
+  '!BASE': {
     color: 'white',
     background: 'rgb(28, 184, 65)'
-  },
+  }
+});
 
-  error: {
+module.exports.error = StyleSheet.composer({
+  '!BASE': {
     color: 'white',
     background: 'rgb(202, 60, 60)'
   }
-
 });
-
-module.exports = ButtonStyles;

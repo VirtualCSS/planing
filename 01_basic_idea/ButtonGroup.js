@@ -3,26 +3,24 @@
  */
 'use strict';
 
-var StyleSheet = require('react-style');
+var StyleSheet = require('virtual-css');
 var React = require('react');
 
 class ButtonGroup extends React.Component {
-
   render() {
     return (
-      <div styles={ButtonGroupStyles.normalStyle}>
+      <div className={ButtonGroupStyles.normalStyle.className}>
         {this.props.children}
       </div>
     );
   }
 }
-
-var ButtonGroupStyles = StyleSheet.create({
-
-  normalStyle: {
-    display: 'inline'
-  }
-
-});
-
 module.exports = ButtonGroup;
+
+var ButtonGroupStyles = module.exports.styles = StyleSheet.create({
+  normalStyle: {
+    '!BASE': {
+      display: 'inline'
+    }
+  }
+});
